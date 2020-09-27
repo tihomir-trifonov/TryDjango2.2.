@@ -16,6 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from try_django import views
+from blog.views import blog_post_detail_page
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home_page),
+    path('about/', views.about_page),
+    path('contact/', views.contact_page),
+    path('example/', views.example_get_template),
+
+    path("blog/<slug>/", blog_post_detail_page),
 ]
