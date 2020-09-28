@@ -1,0 +1,25 @@
+  
+{% extends "blog/base_blog.html" %}
+
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>{{ object.title }}</h1>
+        <p>{{ object.content }}</p>
+        <p>Created by: {{object.user}}</p>
+        
+        {% if request.user.is_authenticated %}
+        {% if request.user.is_staff %}
+        
+        <a href="{{object.get_absolute_url}}/edit/">Edit</a>
+        <a href="{{object.get_absolute_url}}/delete/">Delete</a>
+        
+        {% endif %}
+        {% endif %}
+        
+        
+    </div>
+</div>
+        
+        {% endblock %}
