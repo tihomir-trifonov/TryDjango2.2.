@@ -2,11 +2,14 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import get_template
 from .forms import ContactForm
+from blog.models import BlogPost
 
 
 
 def home_page(request):
-    context = {"list_a" : [1,2,3,4,5]}
+    qs = BlogPost.objects.all()[0:5]
+    print(qs)
+    context = {"title":"Welcome to MongoBlogo","blog_list" : qs}
     return render(request, "home.html", context )
 
 def about_page(request):

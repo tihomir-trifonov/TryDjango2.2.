@@ -2,13 +2,31 @@
 
     
 
-<div class="col col-md-6 mx-auto">
-    <div class="card">
-        <a href="{{object.get_absolute_url}}">
+<div class="col-12 col-md-12 mx-auto">
+    <div class="card {% if not blog_post.publish_date %} bg-warning text-dark {% endif %}">
+        <div class="card-body">
+            
+            {% if blog_post.image %}
+            <a href="{{object.get_absolute_url}}" >
+                <img src="{{ blog_post.image.url}}" class="card-img-left">
+            </a>
+            {% endif %}
+            
             <div class="card-body">
-                <h5>{{ blog_post.title }}</h5>
-                <p class="card-text">{{ blog_post.slug }}</p>
+                <h5 class="card-title">{{ blog_post.title }}</h5>
+                <p class="card-text">{{ blog_post.content|truncatewords:30 }}</p>
             </div>
-        </a>
+            <p>
+            {% if clickable %}
+            <a href="{{object.get_absolute_url}}" > Read Moore </a>
+            {% endif %}
+            {% if not blog_post.publish_date %}It's a drafta..
+            {% else %}<small class="text-muted">{{ blog_post.publish_date}}</small>
+            {% endif %}
+            
+            </p>
+                
+            
+        </div>
     </div>
 </div>

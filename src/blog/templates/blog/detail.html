@@ -6,7 +6,7 @@
 <div class="container">
     <div class="jumbotron">
         <h1>{{ object.title }}</h1>
-        <p>{{ object.content }}</p>
+        <p>{{ object.content|linebreaks }}</p>
         <p>Created by: {{object.user}}</p>
         
         {% if request.user.is_authenticated %}

@@ -1,29 +1,30 @@
 {% extends "base.html" %}
+<div class="container">
+    <div class="jumbotron">
 
-{% block title %}
-Welcome Page
-{% endblock %}
-
-
-{% block content %}
-<h1>Welcome Page from home.html</h1>
-<h2>{{ user }} willkommen</h2>
-
-<p></p>
-
-{% if user.is_authenticated %}
-<h2>Der Mongo {{ user }} hat sich eingelogt</h2>
-<p>Random stuff below</p>
-
-<ol>
-{% for a in list_a %}
-
-<li>{{ a }}</li>
-
-
-{% endfor %}
-</ol>
-
-{% endif %}
-
-{% endblock %}
+        {% block title %}
+        Welcome Page
+        {% endblock %}
+        
+        
+        {% block content %}
+        <h1>Welcome Page from home.html</h1>
+        <h2>{{ user }} willkommen</h2>
+        
+        <p></p>
+        
+        {% if user.is_authenticated %}
+        <h2>Der Mongo {{ user }} hat sich eingelogt</h2>
+        <p>Random stuff below</p>
+        
+        <div class="col">
+            {% for object in blog_list %}
+            {% include "blog/list-inline.html" with blog_post=object clickable=True %}
+            {% endfor %}
+        </div>
+        
+        {% endif %}
+        
+        {% endblock %}
+    </div>
+</div>
